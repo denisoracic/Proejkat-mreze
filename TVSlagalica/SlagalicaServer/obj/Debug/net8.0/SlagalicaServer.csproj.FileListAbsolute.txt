@@ -1,0 +1,36 @@
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.exe
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.deps.json
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.runtimeconfig.json
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.dll
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.pdb
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\Shared.dll
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\bin\Debug\net8.0\Shared.pdb
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.csproj.AssemblyReference.cache
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.AssemblyInfoInputs.cache
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.AssemblyInfo.cs
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.csproj.CoreCompileInputs.cache
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\Slagalic.2D78096C.Up2Date
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.dll
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\refint\SlagalicaServer.dll
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.pdb
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.genruntimeconfig.cache
+C:\Users\denis\OneDrive\Radna površina\TVSlagalica\SlagalicaServer\obj\Debug\net8.0\ref\SlagalicaServer.dll
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.exe
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.deps.json
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.runtimeconfig.json
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.dll
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\SlagalicaServer.pdb
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\Shared.dll
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\bin\Debug\net8.0\Shared.pdb
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.csproj.AssemblyReference.cache
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.AssemblyInfoInputs.cache
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.AssemblyInfo.cs
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.csproj.CoreCompileInputs.cache
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\Slagalic.2D78096C.Up2Date
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.dll
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\refint\SlagalicaServer.dll
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.pdb
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\SlagalicaServer.genruntimeconfig.cache
+C:\Users\denis\source\repos\Proejkat-mreze\SlagalicaServer\obj\Debug\net8.0\ref\SlagalicaServer.dll
