@@ -12,6 +12,11 @@ public class GameManager
 
     private bool _roundActive = false;
     private ClientHandler? _winner = null;
+
+    private readonly Dictionary<string, (double value, double diff)> _mojBrojResults = new();
+    private readonly HashSet<string> _mojBrojTried = new();
+    private bool _mojBrojWinnerAwarded = false;
+
     public bool RegistrationOpen { get; private set; } = true;
 
     public GameManager(GameServer server)
@@ -73,6 +78,8 @@ public class GameManager
 
     private async Task StartRoundAsync(IGame game)
     {
+       
+
         _roundCts?.Cancel();
         _roundCts = new CancellationTokenSource();
 
@@ -80,6 +87,13 @@ public class GameManager
         _roundActive = true;
 
         game.StartRound();
+
+        if (game is MojBrojGame)
+        {
+            _mojBrojResults.Clear();
+            _mojBrojTried.Clear();
+            _mojBrojWinnerAwarded = false;
+        }
 
         var start = new RoundStart
         {
@@ -94,13 +108,56 @@ public class GameManager
             Data = System.Text.Json.JsonSerializer.Serialize(start)
         });
 
+        bool timeExpired = true;
+
         try
         {
             await Task.Delay(game.DurationSeconds * 1000, _roundCts.Token);
         }
-        catch (TaskCanceledException) { }
+        catch (TaskCanceledException)
+        {
+            timeExpired = false; 
+        }
 
         _roundActive = false;
+        if (timeExpired && game is MojBrojGame moj2 && !_mojBrojWinnerAwarded)
+        {
+            var regs = _server.Clients.Where(c => c.IsRegistered).ToList();
+            if (regs.Count > 0)
+            {
+                var best = regs
+                .Select(c => (c, res: _mojBrojResults.TryGetValue(c.Player.Name, out var r)
+                ? r
+                : (value: double.NaN, diff: double.PositiveInfinity)))
+                .OrderBy(x => x.res.diff)
+                .ToList();
+
+
+                if (best.Count >= 1 && best[0].res.diff < double.PositiveInfinity)
+                {
+                    bool tie = best.Count >= 2 && Math.Abs(best[0].res.diff - best[1].res.diff) < 1e-9;
+
+                    if (!tie)
+                    {
+                        best[0].c.Player.Points += moj2.PointsForWin;
+                        _mojBrojWinnerAwarded = true;
+                        await BroadcastAsync(new Message
+                        {
+                            Type = "INFO",
+                            Data = $"Vreme je isteklo. Najbliži je {best[0].c.Player.Name} (+{moj2.PointsForWin})"
+                        });
+                    }
+                    else
+                    {
+                        await BroadcastAsync(new Message
+                        {
+                            Type = "INFO",
+                            Data = "Vreme je isteklo. Nerešeno (isti razmak)."
+                        });
+                    }
+                }
+            }
+        }
 
         var end = new RoundEnd
         {
@@ -122,6 +179,101 @@ public class GameManager
     {
         if (!_roundActive || _currentGame == null)
             return false;
+
+        if (_currentGame is MojBrojGame moj)
+        {
+            string name = player.Player.Name;
+
+            if (_mojBrojTried.Contains(name))
+            {
+                await player.Send(new Message { Type = "RESULT", Data = "Već si iskoristio pokušaj u igri Moj broj." });
+                return false;
+            }
+
+            _mojBrojTried.Add(name);
+
+            if (!moj.TryEvaluate(answer, out double val, out string err))
+            {
+                await player.Send(new Message { Type = "RESULT", Data = $"Neispravan izraz: {err}" });
+                // tretiramo kao promašaj (nema ponovnog pokušaja)
+                _mojBrojResults[name] = (double.NaN, double.PositiveInfinity);
+            }
+            else
+            {
+                double diff = Math.Abs(val - moj.Target);
+                _mojBrojResults[name] = (val, diff);
+
+                await player.Send(new Message
+                {
+                    Type = "RESULT",
+                    Data = $"Rezultat: {val} | Razlika: {diff}"
+                });
+
+                // Ako je tačno, prvi koji pošalje tačno odmah dobija poene i runda se završava
+                if (diff < 1e-9 && !_mojBrojWinnerAwarded)
+                {
+                    _mojBrojWinnerAwarded = true;
+                    player.Player.Points += moj.PointsForWin;
+
+                    await BroadcastAsync(new Message
+                    {
+                        Type = "INFO",
+                        Data = $"{name} je prvi tačno pogodio Moj broj! +{moj.PointsForWin} poena"
+                    });
+
+                    _roundActive = false;
+                    _roundCts?.Cancel();
+                    return true;
+                }
+            }
+
+            // Ako su svi registrovani igrači iskoristili pokušaj, završavamo rundu i dodeljujemo "najbliži"
+            var regs = _server.Clients.Where(c => c.IsRegistered).ToList();
+            if (regs.Count > 0 && regs.All(c => _mojBrojTried.Contains(c.Player.Name)))
+            {
+                if (!_mojBrojWinnerAwarded)
+                {
+                    // niko nije pogodio tačno -> najbliži dobija poene
+                    var best = regs
+                    .Select(c => (c, res: _mojBrojResults.TryGetValue(c.Player.Name, out var r)
+                    ? r
+                    : (value: double.NaN, diff: double.PositiveInfinity)))
+                    .OrderBy(x => x.res.diff)
+                    .ToList();
+
+
+                    if (best.Count >= 1 && best[0].res.diff < double.PositiveInfinity)
+                    {
+                        // proveri nerešen rezultat (isti diff)
+                        bool tie = best.Count >= 2 && Math.Abs(best[0].res.diff - best[1].res.diff) < 1e-9;
+
+                        if (!tie)
+                        {
+                            best[0].c.Player.Points += moj.PointsForWin;
+                            _mojBrojWinnerAwarded = true;
+                            await BroadcastAsync(new Message
+                            {
+                                Type = "INFO",
+                                Data = $"Niko nije pogodio tačno. Najbliži je {best[0].c.Player.Name} (+{moj.PointsForWin})"
+                            });
+                        }
+                        else
+                        {
+                            await BroadcastAsync(new Message
+                            {
+                                Type = "INFO",
+                                Data = "Niko nije pogodio tačno. Rezultat je nerešen (isti razmak)."
+                            });
+                        }
+                    }
+                }
+
+                _roundActive = false;
+                _roundCts?.Cancel();
+            }
+
+            return true;
+        }
 
         if (_currentGame is SkockoGame skocko)
         {
