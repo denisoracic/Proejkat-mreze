@@ -23,4 +23,9 @@ public class KoZnaZnaGame : IGame
 
     public bool CheckAnswer(string answer)
         => answer.Trim().ToLower() == CorrectAnswer;
+    public string GetFeedback(string answer)
+    {
+        return CheckAnswer(answer) ? "TAČNO" : "NETAČNO";
+    }
+
 }

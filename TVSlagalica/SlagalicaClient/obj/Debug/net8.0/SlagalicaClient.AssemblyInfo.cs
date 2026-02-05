@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SlagalicaClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f7277f0dabc629953f2600f54464af195abdadf")]
 [assembly: System.Reflection.AssemblyProductAttribute("SlagalicaClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SlagalicaClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

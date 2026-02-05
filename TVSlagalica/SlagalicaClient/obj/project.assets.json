@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\SlagalicaClient\\SlagalicaClient.csproj",
+      "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\SlagalicaClient\\SlagalicaClient.csproj",
       "projectName": "SlagalicaClient",
-      "projectPath": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\SlagalicaClient\\SlagalicaClient.csproj",
+      "projectPath": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\SlagalicaClient\\SlagalicaClient.csproj",
       "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\SlagalicaClient\\obj\\",
+      "outputPath": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\SlagalicaClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,8 +58,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\Shared\\Shared.csproj": {
-              "projectPath": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\Shared\\Shared.csproj"
+            "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\Shared\\Shared.csproj"
             }
           }
         }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\Shared\\Shared.csproj",
+      "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\Shared\\Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\Shared\\Shared.csproj",
+      "projectPath": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\Shared\\Shared.csproj",
       "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denis\\OneDrive\\Radna površina\\TVSlagalica\\Shared\\obj\\",
+      "outputPath": "C:\\Users\\denis\\Source\\Repos\\Projekat-mreze\\TVSlagalica\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

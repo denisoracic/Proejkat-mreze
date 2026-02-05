@@ -12,4 +12,6 @@ public interface IGame
     void StartRound();
     string GetPrompt();
     bool CheckAnswer(string answer);
+    string GetFeedback(string answer);
+
 }

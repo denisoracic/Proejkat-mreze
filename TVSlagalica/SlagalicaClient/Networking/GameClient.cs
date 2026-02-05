@@ -21,7 +21,6 @@ public class GameClient
 
         _ = Receive();
 
-        Console.WriteLine("Upisi odgovor (npr. test) i Enter:");
         while (true)
         {
             string input = Console.ReadLine() ?? "";

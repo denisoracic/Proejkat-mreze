@@ -5,7 +5,7 @@ namespace SlagalicaServer.Game;
 public class MojBrojGame : IGame
 {
     public GameType Type => GameType.MojBroj;
-    public int DurationSeconds => 30;
+    public int DurationSeconds => 120;
     public int PointsForWin => 15;
 
     public string CorrectAnswer { get; private set; } = "";
@@ -29,4 +29,9 @@ public class MojBrojGame : IGame
 
     public bool CheckAnswer(string answer)
         => answer.Trim() == CorrectAnswer;
+    public string GetFeedback(string answer)
+    {
+        return CheckAnswer(answer) ? "TAČNO" : "NETAČNO";
+    }
+
 }

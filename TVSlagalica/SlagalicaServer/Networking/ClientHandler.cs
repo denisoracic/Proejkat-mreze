@@ -14,6 +14,7 @@ namespace SlagalicaServer.Networking
     {
         private TcpClient _client;
         private GameServer _server;
+        public bool IsRegistered { get; set; } = false;
 
         public Player Player { get; set; } = new Player();
 
@@ -45,11 +46,34 @@ namespace SlagalicaServer.Networking
             switch (msg.Type)
             {
                 case "REGISTER":
+                    if (!_server.GameManager.RegistrationOpen)
+                    {
+                        await Send(new Message
+                        {
+                            Type = "INFO",
+                            Data = "Igra je već počela – ne možeš se priključiti ovoj partiji."
+                        });
+                        return;
+                    }
+
                     Player.Name = msg.Data;
+                    IsRegistered = true;
                     Console.WriteLine($"Igrač povezan: {Player.Name}");
                     break;
 
                 case "ANSWER":
+
+                    if (!IsRegistered)
+                    {
+                        await Send(new Message
+                        {
+                            Type = "INFO",
+                            Data = "Nisi registrovan za ovu partiju."
+                        });
+
+                        _client.Close();
+                        return;
+                    }
                     await _server.GameManager.TryAnswerAsync(this, msg.Data);
                     break;
             }
